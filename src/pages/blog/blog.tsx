@@ -52,7 +52,7 @@ const Blog: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 w-screen">
       <Header />
       <nav className="bg-white shadow-sm hidden">
         <div className="max-w-3xl mx-auto px-4 py-4">

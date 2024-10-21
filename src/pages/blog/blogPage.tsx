@@ -92,7 +92,7 @@ export function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 w-screen">
       <Header />
       <main className="max-w-3xl mx-auto py-8 px-4 sm:pt-20">
         <Link 
