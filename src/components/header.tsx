@@ -18,7 +18,7 @@ const Header = () => {
                         <span onClick={toggleCard}>Close Card</span>
                     </div>
                 </div>
-                <Link to="/blog">Blog</Link>
+                <a href="https://julius.brightons.site/blog">Blog</a>
         </div>
         </div>
     );
