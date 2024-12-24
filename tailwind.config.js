@@ -14,7 +14,8 @@ module.exports = {
       center: true,
       padding: "2rem",
       fontFamily: {
-        'mono': ['IBM Plex Mono', 'monospace']
+        'mono': ['IBM Plex Mono', 'monospace'],
+        'pop': 'Poppins',
       },
       fontSize: {
         'xs': '12px',  

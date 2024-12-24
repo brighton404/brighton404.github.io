@@ -28,7 +28,7 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
-const Button: FC<ButtonProps> = ({ 
+const actionButton: FC<ButtonProps> = ({ 
   color, 
   state, 
   icon, 
@@ -63,5 +63,5 @@ const Button: FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default actionButton;
 export { ButtonColor, ButtonState };

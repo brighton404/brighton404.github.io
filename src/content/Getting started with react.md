@@ -1,4 +1,5 @@
 ---
+id: Getting started with react
 title: Getting Started with React: A Beginner's Guide
 date: 2024-10-10
 author: Julius Brighton

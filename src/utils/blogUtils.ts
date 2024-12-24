@@ -1,4 +1,5 @@
 interface FrontMatter {
+  id?: string;
   title: string;
   date: string;
   author: string;
@@ -28,6 +29,7 @@ function parseFrontMatter(content: string): { data: FrontMatter; content: string
           return isNaN(num) ? v.trim() : num;
         });
       }
+      
       data[key.trim()] = value;
     }
   });
@@ -38,29 +40,26 @@ function parseFrontMatter(content: string): { data: FrontMatter; content: string
   };
 }
 
-function generateId(): string {
-  return Math.random().toString(36).substring(2, 15) +
-         Math.random().toString(36).substring(2, 15);
-}
-
 const idMapping = new Map<string, string>();
 
 export async function getBlogPosts() {
-  const posts = import.meta.glob('/src/content/*.md', {
+  const posts = import.meta.glob('../content/*.md', {
     eager: true,
-    as: 'raw'
+    query: '?raw',
+    import: 'default'
   });
 
   return Object.entries(posts).map(([filepath, content]) => {
     const { data, content: markdownContent } = parseFrontMatter(content as string);
-    const slug = filepath.replace('/src/content/', '').replace('.md', '');
-    
-    let id = idMapping.get(slug);
+    const slug = filepath.replace('../content/', '').replace('.md', '');
+
+    // Use the ID from front matter, or generate one if not provided
+    let id = data.id || idMapping.get(slug);
     if (!id) {
       id = generateId();
       idMapping.set(slug, id);
     }
-    
+
     return {
       id,
       slug,
@@ -77,4 +76,9 @@ export async function getBlogPosts() {
 export async function getPostById(id: string) {
   const posts = await getBlogPosts();
   return posts.find(post => post.id === id) ?? null;
+}
+
+function generateId(): string {
+  return Math.random().toString(36).substring(2, 15) +
+         Math.random().toString(36).substring(2, 15);
 }
